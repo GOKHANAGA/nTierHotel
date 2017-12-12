@@ -1,0 +1,5 @@
+C:\Users\nbuy_ogrenci\Desktop\VSProjects\20171212HotelProject\HotelDAL\bin\Debug\HotelDAL.dll
+C:\Users\nbuy_ogrenci\Desktop\VSProjects\20171212HotelProject\HotelDAL\bin\Debug\HotelDAL.pdb
+C:\Users\nbuy_ogrenci\Desktop\VSProjects\20171212HotelProject\HotelDAL\obj\Debug\HotelDAL.csprojResolveAssemblyReference.cache
+C:\Users\nbuy_ogrenci\Desktop\VSProjects\20171212HotelProject\HotelDAL\obj\Debug\HotelDAL.dll
+C:\Users\nbuy_ogrenci\Desktop\VSProjects\20171212HotelProject\HotelDAL\obj\Debug\HotelDAL.pdb
