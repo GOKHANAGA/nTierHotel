@@ -30,3 +30,16 @@ BEGIN
 		END
 
 END
+
+
+---------------------------------------------------
+
+DECLARE @checkIn Datetime2(2)='2017-12-09'
+DECLARE @checkOut DATETIME2(2)='2017-12-21'
+
+SELECT RoomID FROM Room WHERE RoomID NOT IN (SELECT r.RoomID FROM Room r
+				INNER JOIN Booked b ON b.RoomID=r.RoomID
+				WHERE (@checkIn BETWEEN b.Check_In AND b.Check_Out)
+						OR (@checkOut BETWEEN b.Check_In AND b.Check_Out)
+						OR(b.Check_In BETWEEN @checkIn AND @checkOut)
+						OR(b.Check_Out BETWEEN @checkIn AND @checkOut))
