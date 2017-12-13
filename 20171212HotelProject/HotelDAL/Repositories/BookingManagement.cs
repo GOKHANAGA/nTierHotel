@@ -10,7 +10,7 @@ namespace HotelDAL.Repositories
 {
     public class BookingManagement
     {
-        public void AddBooking(int reservationID,int roomID,DateTime check_in,DateTime check_out)
+        public void AddBooking(Guid reservationID,int roomID,DateTime check_in,DateTime check_out)
         {
             SqlConnection conn = Helper.Connection.DatabaseConnection;
 

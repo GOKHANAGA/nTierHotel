@@ -38,7 +38,7 @@ namespace HotelDAL.Repositories
                 }
                 int effectedRowCount = cmd.ExecuteNonQuery();
 
-                _bookingManager.AddBooking(2, roomID,check_in,check_out);
+                _bookingManager.AddBooking(reservationNo, roomID,check_in,check_out);
 
 
             }
