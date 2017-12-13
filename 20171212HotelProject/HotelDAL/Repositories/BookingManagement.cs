@@ -43,5 +43,28 @@ namespace HotelDAL.Repositories
 
 
         }
+
+        public DataSet GetEmptyRooms(DateTime check_in,DateTime check_out)
+        {
+            SqlConnection conn = Helper.Connection.DatabaseConnection;
+            DataSet dS = new DataSet();
+
+            try
+            {
+                string selectQuery = "SELECT * FROM Room WHERE RoomID NOT IN (SELECT r.RoomID FROM Room r INNER JOIN Booked b ON b.RoomID=r.RoomID WHERE (@checkIn BETWEEN b.Check_In AND b.Check_Out) OR (@checkOut BETWEEN b.Check_In AND b.Check_Out) OR(b.Check_In BETWEEN @checkIn AND @checkOut) OR(b.Check_Out BETWEEN @checkIn AND @checkOut))";
+
+                SqlCommand cmd = new SqlCommand(selectQuery, conn);
+                cmd.Parameters.Add("@checkIn", check_in);
+                cmd.Parameters.Add("@checkOut", check_out);
+
+                SqlDataAdapter dA = new SqlDataAdapter(cmd);
+                dA.Fill(dS);
+            }
+            catch
+            {
+
+            }
+            return dS;
+        }
     }
 }

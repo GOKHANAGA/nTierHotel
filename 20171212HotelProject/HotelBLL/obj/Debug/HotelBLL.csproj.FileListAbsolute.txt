@@ -12,3 +12,10 @@ C:\Users\nbuy_ogrenci\Documents\GitHub\nTierHotel\20171212HotelProject\HotelBLL\
 C:\Users\nbuy_ogrenci\Documents\GitHub\nTierHotel\20171212HotelProject\HotelBLL\obj\Debug\HotelBLL.csprojResolveAssemblyReference.cache
 C:\Users\nbuy_ogrenci\Documents\GitHub\nTierHotel\20171212HotelProject\HotelBLL\obj\Debug\HotelBLL.dll
 C:\Users\nbuy_ogrenci\Documents\GitHub\nTierHotel\20171212HotelProject\HotelBLL\obj\Debug\HotelBLL.pdb
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelBLL\bin\Debug\HotelBLL.dll
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelBLL\bin\Debug\HotelBLL.pdb
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelBLL\bin\Debug\HotelDAL.dll
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelBLL\bin\Debug\HotelDAL.pdb
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelBLL\obj\Debug\HotelBLL.csprojResolveAssemblyReference.cache
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelBLL\obj\Debug\HotelBLL.dll
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelBLL\obj\Debug\HotelBLL.pdb

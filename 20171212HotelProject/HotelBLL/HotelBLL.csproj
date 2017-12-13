@@ -40,9 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BookingManagement.cs" />
     <Compile Include="Repositories\CustomerManagement.cs" />
     <Compile Include="Repositories\PeopleManagement.cs" />
     <Compile Include="Repositories\ReservationManagement.cs" />
+    <Compile Include="Repositories\ReservationTypeManagement.cs" />
     <Compile Include="Repositories\UserManagement.cs" />
   </ItemGroup>
   <ItemGroup>
