@@ -43,3 +43,7 @@ SELECT RoomID FROM Room WHERE RoomID NOT IN (SELECT r.RoomID FROM Room r
 						OR (@checkOut BETWEEN b.Check_In AND b.Check_Out)
 						OR(b.Check_In BETWEEN @checkIn AND @checkOut)
 						OR(b.Check_Out BETWEEN @checkIn AND @checkOut))
+						
+						
+						
+						
