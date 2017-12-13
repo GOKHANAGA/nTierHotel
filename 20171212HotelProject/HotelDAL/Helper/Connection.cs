@@ -15,19 +15,19 @@ namespace HotelDAL.Helper
         private static SqlConnection _marsDatabaseConnection;
 
 
-        public static string ConnectionString
+        internal static string ConnectionString
         {
             get { return Connection._connectionString; }
         }
 
-        public static string ConnectionStringMars
+        internal static string ConnectionStringMars
         {
             get { return Connection._connectionStringMars; }
 
         }
 
 
-        public static SqlConnection MarsDatabaseConnection
+        internal static SqlConnection MarsDatabaseConnection
         {
             get
             {
@@ -41,7 +41,7 @@ namespace HotelDAL.Helper
         }
 
 
-        public static SqlConnection DatabaseConnection
+        internal static SqlConnection DatabaseConnection
         {
             get
             {
