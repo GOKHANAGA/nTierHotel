@@ -45,5 +45,38 @@ SELECT RoomID FROM Room WHERE RoomID NOT IN (SELECT r.RoomID FROM Room r
 						OR(b.Check_Out BETWEEN @checkIn AND @checkOut))
 						
 						
+----------------------------------------------------
+        <%-- Panel Beginning --%>
+        <div class="panel panel-warning">
+            <%-- panel header beginning --%>
+            <div class="panel-heading">
+                <h3 class="panel-title">1.Kişi Bilgileri</h3>
+            </div>
+            <%-- panel header end --%>
+            <%-- panel body beginning --%>
+            <div class="panel-body">
+                <%-- headerLabels beginning --%>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">First Name</label>
+                    <label for="inputEmail3" class="col-sm-3 control-label">Last Name</label>
+                    <label for="inputEmail3" class="col-sm-3 control-label">Civilization Number</label>
+                </div>
+                <%-- Header labels end --%>
+                <%-- TextBoxes Beginning --%>
+                <div class="form-group">
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <asp:TextBox ID="txtFirstName" class="form-control" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="col-sm-3 ">
+                        <asp:TextBox ID="txtLastName" class="form-control" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="col-sm-3 ">
+                        <asp:TextBox ID="txtCivilizationNumber" class="form-control" runat="server"></asp:TextBox>
+                    </div>
+                </div>
+                <%-- textBox --%>
+            </div>
+        </div>						
+						
 						
 						

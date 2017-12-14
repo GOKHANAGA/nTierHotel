@@ -26,7 +26,7 @@
     <div class="form-group">
         <div class="col-sm-1 col-sm-offset-2">
             <%-- <input type="email" class="form-control" id="inputEmail3" placeholder="Email" />--%>
-            <asp:DropDownList ID="ddlPersonCount"  AutoPostBack="True" CssClass="dropdown dropdown-toggle btn btn-warning btn-lg" runat="server" OnSelectedIndexChanged="ddlPersonCount_SelectedIndexChanged"></asp:DropDownList>
+            <asp:DropDownList ID="ddlPersonCount" AutoPostBack="True" CssClass="dropdown dropdown-toggle btn btn-warning btn-lg" runat="server" OnSelectedIndexChanged="ddlPersonCount_SelectedIndexChanged"></asp:DropDownList>
             <%--            <asp:TextBox ID="txtUserID" class="form-control" runat="server"></asp:TextBox>--%>
         </div>
         <div class="col-sm-1">
@@ -42,34 +42,9 @@
     </div>
 
 
-    <asp:Panel ID="Panel1" runat="server">
+    <div id="personInfo" runat="server">
 
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                <h3 class="panel-title">1.Kişi Bilgileri</h3>
-            </div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label">First Name</label>
-                    <label for="inputEmail3" class="col-sm-3 control-label">Last Name</label>
-                    <label for="inputEmail3" class="col-sm-3 control-label">Civilization Number</label>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-3 col-sm-offset-1">
-                        <asp:TextBox ID="txtFirstName" class="form-control" runat="server"></asp:TextBox>
-                    </div>
-                    <div class="col-sm-3 ">
-                        <asp:TextBox ID="txtLastName" class="form-control" runat="server"></asp:TextBox>
-                    </div>
-                    <div class="col-sm-3 ">
-                        <asp:TextBox ID="txtCivilizationNumber" class="form-control" runat="server"></asp:TextBox>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </asp:Panel>
-
+    </div>
 
 
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace HotelReservation
@@ -27,13 +28,10 @@ namespace HotelReservation
 
         protected void btnReserve_Click(object sender, EventArgs e)
         {
-            //HotelBLL.Repositories.ReservationManagement _reservationManager = new HotelBLL.Repositories.ReservationManagement();
-            //_reservationManager.AddReservation(Convert.ToInt64(txtCivilizationNumber.Text), txtFirstName.Text, txtLastName.Text, txtUserID.Text, txtType.Text, Convert.ToInt32(txtRoom.Text), check_inCal.SelectedDate, check_outCal.SelectedDate);
+            
 
 
-            //            }
-
-
+           
         }
 
         public void FillDropDowns()
@@ -73,8 +71,27 @@ namespace HotelReservation
         protected void ddlPersonCount_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            txtFirstName.Text = PriceTrial((ddlPersonCount.SelectedIndex + 1), check_inCal.SelectedDate, check_outCal.SelectedDate).ToString();
+            //txtFirstName.Text = PriceTrial((ddlPersonCount.SelectedIndex + 1), check_inCal.SelectedDate, check_outCal.SelectedDate).ToString();
 
+            //foreach (var item in Request.Form.AllKeys)
+            //{
+
+            //    if(item.Contains("txtFirstName"))
+            //    {
+            //      string deger=Request.Form[item].ToString();
+            //    }
+            //    else if (item.Contains("txtLastName"))
+            //    {
+
+            //    }
+            //    else if (item.Contains("txtCivilizationNo"))
+            //    {
+
+            //    }
+
+            //}       
+
+            AddGuestInfoPanel(ddlPersonCount.SelectedIndex + 1);
         }
 
         public double PriceTrial(int kisiSayisi, DateTime check_in, DateTime check_out)
@@ -118,6 +135,88 @@ namespace HotelReservation
 
             return totalPrice;
 
+        }
+
+        public void AddGuestInfoPanel(int personCount)
+        {
+            for (int i = 1; i <= personCount; i++)
+            {
+                /*----Panel header begin----*/
+                HtmlGenericControl panelHeader = new HtmlGenericControl("div");
+                panelHeader.Attributes["class"] = "panel-heading";
+                panelHeader.InnerHtml = "<h3 class='panel-title'>" + i + ".Kişi Bilgileri</h3>";
+
+                #region firstName
+
+                /*----TextBox for firstName----*/
+                TextBox txtFirstName = new TextBox();
+                txtFirstName.ID = "txtFirstName" + i;
+                txtFirstName.Attributes["class"] = "form-control";
+                txtFirstName.Attributes["runat"] = "server";
+
+
+                /*----FirstName TXT Dıv group*/
+                HtmlGenericControl innerDivName = new HtmlGenericControl("div");
+                innerDivName.Attributes["class"] = "col-sm-3 col-sm-offset-1";
+                innerDivName.Controls.Add(txtFirstName);
+                #endregion
+
+                #region lastName
+                /*----TextBox for lastName----*/
+                TextBox txtLastName = new TextBox();
+                txtLastName.ID = "txtLastName" + i;
+                txtLastName.Attributes["class"] = "form-control";
+                txtLastName.Attributes["runat"] = "server";
+
+
+                /*----LastName TXT Dıv group*/
+                HtmlGenericControl innerDivSurname = new HtmlGenericControl("div");
+                innerDivSurname.Attributes["class"] = "col-sm-3";
+                innerDivSurname.Controls.Add(txtLastName);
+                #endregion
+
+                #region civilizationNo
+
+                /*----TextBox for CivilizationNo----*/
+                TextBox txtCivilizationNo = new TextBox();
+                txtCivilizationNo.ID = "txtCivilizationNo" + i;
+                txtCivilizationNo.Attributes["class"] = "form-control";
+                txtCivilizationNo.Attributes["runat"] = "server";
+
+                /*----CivilizationNo TXT Dıv group*/
+                HtmlGenericControl innerDivCivNo = new HtmlGenericControl("div");
+                innerDivCivNo.Attributes["class"] = "col-sm-3";
+                innerDivCivNo.Controls.Add(txtCivilizationNo);
+
+                #endregion
+
+                /*----TextBoxtAdding----*/
+                HtmlGenericControl txtDiv = new HtmlGenericControl("div");
+                txtDiv.Attributes["class"] = "form-group";
+                txtDiv.Controls.Add(innerDivName);
+                txtDiv.Controls.Add(innerDivSurname);
+                txtDiv.Controls.Add(innerDivCivNo);
+
+                /*----headerLabels----*/
+                HtmlGenericControl headerLabels = new HtmlGenericControl("div");
+                headerLabels.Attributes["class"] = "form-group";
+                headerLabels.InnerHtml = "<label for='inputEmail3' class='col-sm-3 control-label'>First Name</label><label for='inputEmail3' class='col-sm-3 control-label'>Last Name</label><label for='inputEmail3' class='col-sm-3 control-label'>Civilization Number</label>";
+
+
+                /*----Panel body beginning----*/
+                HtmlGenericControl panelBody = new HtmlGenericControl("div");
+                panelBody.Attributes["class"] = "panel-body";
+                panelHeader.Controls.Add(headerLabels);
+                panelHeader.Controls.Add(txtDiv);
+
+                /*----Panel Beginning*/
+                HtmlGenericControl generalDiv = new HtmlGenericControl("div");
+                generalDiv.Attributes["class"] = "panel panel-warning";
+                generalDiv.Controls.Add(panelHeader);
+                generalDiv.Controls.Add(panelBody);
+
+                personInfo.Controls.Add(generalDiv);
+            }
         }
     }
 }
