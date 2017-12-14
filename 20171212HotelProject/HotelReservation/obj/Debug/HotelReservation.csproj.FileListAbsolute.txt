@@ -18,3 +18,13 @@ C:\Users\nbuy_ogrenci\Documents\GitHub\nTierHotel\20171212HotelProject\HotelRese
 C:\Users\nbuy_ogrenci\Documents\GitHub\nTierHotel\20171212HotelProject\HotelReservation\obj\Debug\HotelReservation.csprojResolveAssemblyReference.cache
 C:\Users\nbuy_ogrenci\Documents\GitHub\nTierHotel\20171212HotelProject\HotelReservation\obj\Debug\HotelReservation.dll
 C:\Users\nbuy_ogrenci\Documents\GitHub\nTierHotel\20171212HotelProject\HotelReservation\obj\Debug\HotelReservation.pdb
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\bin\HotelReservation.dll.config
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\bin\HotelReservation.dll
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\bin\HotelReservation.pdb
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\bin\HotelBLL.dll
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\bin\HotelDAL.dll
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\bin\HotelBLL.pdb
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\bin\HotelDAL.pdb
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\obj\Debug\HotelReservation.csprojResolveAssemblyReference.cache
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\obj\Debug\HotelReservation.dll
+C:\Users\Gökhan\Desktop\nTierHotel\20171212HotelProject\HotelReservation\obj\Debug\HotelReservation.pdb
