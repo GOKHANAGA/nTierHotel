@@ -21,6 +21,7 @@ namespace HotelReservation
                 check_inCal.SelectedDate = DateTime.Now;
                 check_outCal.SelectedDate = DateTime.Now.AddDays(1);
                 FillDropDowns();
+                AddGuestInfoPanel(1);
             }
 
 
