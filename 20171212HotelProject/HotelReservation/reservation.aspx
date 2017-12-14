@@ -40,6 +40,7 @@
             <%--            <asp:TextBox ID="txtUserID" class="form-control" runat="server"></asp:TextBox>--%>
         </div>
     </div>
+ 
 
 
     <div id="personInfo" runat="server">
@@ -52,6 +53,7 @@
         <div class="col-sm-offset-5 col-sm-10">
             <%--  <button type="submit" class="btn btn-default">Sign in</button> --%>
             <asp:Button ID="btnReserve" class="btn btn-warning btn-lg" runat="server" Text="Sign Up" OnClick="btnReserve_Click" />
+            <br />
         </div>
 
     </div>

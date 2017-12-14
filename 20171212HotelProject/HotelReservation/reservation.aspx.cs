@@ -29,10 +29,7 @@ namespace HotelReservation
 
         protected void btnReserve_Click(object sender, EventArgs e)
         {
-            
-
-
-           
+            GetGuestInfoInForm(ddlPersonCount.SelectedIndex + 1);
         }
 
         public void FillDropDowns()
@@ -72,25 +69,7 @@ namespace HotelReservation
         protected void ddlPersonCount_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            //txtFirstName.Text = PriceTrial((ddlPersonCount.SelectedIndex + 1), check_inCal.SelectedDate, check_outCal.SelectedDate).ToString();
-
-            //foreach (var item in Request.Form.AllKeys)
-            //{
-
-            //    if(item.Contains("txtFirstName"))
-            //    {
-            //      string deger=Request.Form[item].ToString();
-            //    }
-            //    else if (item.Contains("txtLastName"))
-            //    {
-
-            //    }
-            //    else if (item.Contains("txtCivilizationNo"))
-            //    {
-
-            //    }
-
-            //}       
+            //txtFirstName.Text = PriceTrial((ddlPersonCount.SelectedIndex + 1), check_inCal.SelectedDate, check_outCal.SelectedDate).ToString();      
 
             AddGuestInfoPanel(ddlPersonCount.SelectedIndex + 1);
         }
@@ -183,7 +162,8 @@ namespace HotelReservation
                 txtCivilizationNo.ID = "txtCivilizationNo" + i;
                 txtCivilizationNo.Attributes["class"] = "form-control";
                 txtCivilizationNo.Attributes["runat"] = "server";
-
+                txtCivilizationNo.Attributes["title"] = "11 Haneli sayısal giriş zorunludur.";
+                txtCivilizationNo.Attributes["pattern"] = "[0-9]{11}";
                 /*----CivilizationNo TXT Dıv group*/
                 HtmlGenericControl innerDivCivNo = new HtmlGenericControl("div");
                 innerDivCivNo.Attributes["class"] = "col-sm-3";
@@ -217,6 +197,35 @@ namespace HotelReservation
                 generalDiv.Controls.Add(panelBody);
 
                 personInfo.Controls.Add(generalDiv);
+            }
+        }
+
+        public void GetGuestInfoInForm(int personCount)
+        {
+            List<Person> guestList = new List<Person>();
+
+            for (int i = 1; i <= personCount; i++)
+            {
+                Person person = new Person();
+                foreach (var item in Request.Form.AllKeys)
+                {
+
+                    if (item.Contains("txtFirstName"+i))
+                    {
+                        person.FirstName = Request.Form[item].ToString();
+                    }
+                    else if (item.Contains("txtLastName"+i))
+                    {
+                        person.LastName = Request.Form[item].ToString();
+                    }
+                    else if (item.Contains("txtCivilizationNo"+i))
+                    {
+                        person.CivilizationNo = Request.Form[item].ToString();
+                    }
+
+                }
+                guestList.Add(person);
+
             }
         }
     }
