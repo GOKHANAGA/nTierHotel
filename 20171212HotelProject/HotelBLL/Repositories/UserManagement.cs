@@ -10,14 +10,14 @@ namespace HotelBLL.Repositories
     {
         HotelDAL.Repositories.UserManagement _userManager = new HotelDAL.Repositories.UserManagement();
 
-        public void AddUser(string userName,string e_mail,string password,string firstName,string lastName,long civilizationNo)
+        public void AddUser(string userName,string e_mail,string password,string firstName,string lastName,string civilizationNo)
         {
             _userManager.AddUser(userName, e_mail, password, firstName, lastName, civilizationNo);
         }
 
-        public bool UserLogin(string e_mail,string password)
+        public bool UserLogin(string e_mail,string password,out Guid userID,out string userName)
         {
-           return _userManager.UserLogin(e_mail,password);
+           return _userManager.UserLogin(e_mail,password,out userID,out userName);
         }
     }
 }

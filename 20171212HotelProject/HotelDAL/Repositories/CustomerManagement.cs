@@ -10,7 +10,7 @@ namespace HotelDAL.Repositories
 {
     public class CustomerManagement
     {
-        public void AddCustomer(long CivilizationNo)
+        public void AddCustomer(string CivilizationNo)
         {
             SqlConnection conn = Helper.Connection.DatabaseConnection;
 

@@ -11,7 +11,7 @@ namespace HotelDAL.Repositories
     public class PeopleManagement
     {
 
-        public void AddPeople(long civilizationNo,string firstName,string lastName)
+        public void AddPeople(string civilizationNo,string firstName,string lastName)
         {
             SqlConnection conn = Helper.Connection.DatabaseConnection;
             try
@@ -36,7 +36,7 @@ namespace HotelDAL.Repositories
             {
                 if (ex.Message == "İsim-KimlikNo uyuşmazlığı")
                 {
-                    string asd = "olmadiii";
+                    string asd = ex.Message;
                 }
                 else
                 {

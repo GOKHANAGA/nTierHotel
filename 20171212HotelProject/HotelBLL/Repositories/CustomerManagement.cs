@@ -10,7 +10,7 @@ namespace HotelBLL.Repositories
     {
         HotelDAL.Repositories.CustomerManagement _customerManager = new HotelDAL.Repositories.CustomerManagement();
 
-        public void AddCustomer(long civilizationNo)
+        public void AddCustomer(string civilizationNo)
         {
             _customerManager.AddCustomer(civilizationNo);
         }

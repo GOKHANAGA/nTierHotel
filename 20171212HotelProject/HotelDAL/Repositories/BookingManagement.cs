@@ -31,10 +31,7 @@ namespace HotelDAL.Repositories
             }
             catch(Exception )
             {
-                /*
-                 * dive id ver onun içine textbox ekle
-                 * 
-                 */
+
             }
             finally
             {

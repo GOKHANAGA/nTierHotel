@@ -11,7 +11,7 @@ namespace HotelBLL.Repositories
         //,int reservationNo,Guid UserID,string resTypeID,int roomID
         HotelDAL.Repositories.PeopleManagement _peopleManager = new HotelDAL.Repositories.PeopleManagement();
 
-        public void AddPeople(long civilizationNo,string firstName,string lastName)
+        public void AddPeople(string civilizationNo,string firstName,string lastName)
         {
             _peopleManager.AddPeople(civilizationNo, firstName, lastName);
         }

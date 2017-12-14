@@ -11,7 +11,7 @@ namespace HotelDAL.Repositories
 {
     public class UserManagement
     {
-        public void AddUser(string userName,string e_mail,string password,string firstName,string lastName,long civilizationNo)
+        public void AddUser(string userName,string e_mail,string password,string firstName,string lastName,string civilizationNo)
         {
             SqlConnection conn = Connection.DatabaseConnection;
             string addPeopleQuery="INSERT INTO People (CivilizationNo,FirstName,lastName) VALUES (@civilizationNo,@firstName,@lastName)";
@@ -56,10 +56,10 @@ namespace HotelDAL.Repositories
 
         }
 
-        public bool UserLogin(string e_mail,string password)
+        public bool UserLogin(string e_mail,string password,out Guid userID,out string userName)
         {
             SqlConnection conn = Connection.DatabaseConnection;
-            string userIDQuery = "SELECT COUNT(*) FROM Passwords WHERE UserID=(SELECT UserID FROM Users WHERE E_Mail = @e_mail) AND UserPassword = @password AND IsActive = 'True'";
+            string userIDQuery = "SELECT * FROM Users AS u INNER JOIN Passwords AS p ON u.UserID=p.UserID WHERE u.UserID=(SELECT us.UserID FROM Users AS us WHERE E_Mail = @e_mail) AND UserPassword = @password AND IsActive = 'True'";
             SqlCommand cmd = new SqlCommand(userIDQuery,conn);
             cmd.Parameters.AddWithValue("@e_mail", e_mail);
             cmd.Parameters.AddWithValue("@password", password);
@@ -71,8 +71,11 @@ namespace HotelDAL.Repositories
                     conn.Open();
                 }
 
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                if (count == 1)
+                SqlDataReader dR = cmd.ExecuteReader();
+                dR.Read();
+                userName = dR["UserName"].ToString();
+                userID = Guid.Parse(dR["UserID"].ToString());
+                if (dR["E_mail"].ToString()==e_mail)
                 {
                     return true;
                 }

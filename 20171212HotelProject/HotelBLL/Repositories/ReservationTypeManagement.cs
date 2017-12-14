@@ -15,5 +15,9 @@ namespace HotelBLL.Repositories
         {
             return _typeManager.ListTypes();
         }
+
+
+
+
     }
 }

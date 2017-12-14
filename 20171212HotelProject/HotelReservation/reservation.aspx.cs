@@ -1,6 +1,7 @@
 ﻿using HotelBLL.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,6 +14,9 @@ namespace HotelReservation
     {
         ReservationTypeManagement _typeManager = new ReservationTypeManagement();
         BookingManagement _bookingManager = new BookingManagement();
+        ReservationManagement _reservationManager = new ReservationManagement();
+        RoomManagement _roomManager = new RoomManagement();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,13 +27,22 @@ namespace HotelReservation
                 FillDropDowns();
                 AddGuestInfoPanel(1);
             }
+            if (Session["userName"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
 
+
+                ddlRooms.DataSource = null;
+                ddlRooms.DataSource = _bookingManager.GetEmptyRooms(check_inCal.SelectedDate, check_outCal.SelectedDate).Tables[0];
+                ddlRooms.DataTextField = "RoomNumber";
+                ddlRooms.DataBind();
 
         }
 
         protected void btnReserve_Click(object sender, EventArgs e)
         {
-            GetGuestInfoInForm(ddlPersonCount.SelectedIndex + 1);
+            _reservationManager.AddReservation(GetGuestInfoInForm(ddlPersonCount.SelectedIndex + 1), Session["userID"].ToString(), Convert.ToInt32(ddlPersonCount.SelectedValue), GetType(), _reservationManager.CalculateTotalPrice(Convert.ToInt32(ddlPersonCount.SelectedValue),check_inCal.SelectedDate,check_outCal.SelectedDate), _roomManager.GetRoomID(ddlRooms.SelectedValue), check_inCal.SelectedDate, check_outCal.SelectedDate);
         }
 
         public void FillDropDowns()
@@ -37,6 +50,11 @@ namespace HotelReservation
             ddlType.DataSource = _typeManager.ListTypes().Tables[0];
             ddlType.DataTextField = "TypeName";
             ddlType.DataBind();
+            Session["F"] = _typeManager.ListTypes().Tables[0].Rows[0].Field<string>(0);
+            Session["FF"] = _typeManager.ListTypes().Tables[0].Rows[1].Field<string>(0);
+            Session["S"] = _typeManager.ListTypes().Tables[0].Rows[2].Field<string>(0);
+
+
 
             for (int i = 1; i <= 10; i++)
             {
@@ -74,48 +92,7 @@ namespace HotelReservation
             AddGuestInfoPanel(ddlPersonCount.SelectedIndex + 1);
         }
 
-        public double PriceTrial(int kisiSayisi, DateTime check_in, DateTime check_out)
-        {
-            double totalPrice = 0;
-            double weekDayPrice = 20.0;
-            double weekendPrice = weekDayPrice + (weekDayPrice * 0.3);
 
-            for (DateTime i = check_in; i <= check_out; i = i.AddDays(1))
-            {
-                double standart = 0;
-                if (i.DayOfWeek == DayOfWeek.Saturday || i.DayOfWeek == DayOfWeek.Sunday)
-                {
-                    standart = weekendPrice;
-                }
-                else
-                {
-                    standart = weekDayPrice;
-                }
-
-                while (kisiSayisi != 0)
-                {
-                    if (kisiSayisi % 3 == 0)
-                    {
-                        totalPrice += (standart + (standart * 0.3));
-                        kisiSayisi -= 3;
-                    }
-                    else if (kisiSayisi % 3 == 1)
-                    {
-                        totalPrice += (standart - (standart * 0.2));
-                        kisiSayisi -= 1;
-                    }
-                    else if (kisiSayisi % 3 == 2)
-                    {
-                        totalPrice += standart;
-                        kisiSayisi -= 2;
-                    }
-                }
-            }
-
-
-            return totalPrice;
-
-        }
 
         public void AddGuestInfoPanel(int personCount)
         {
@@ -200,32 +177,56 @@ namespace HotelReservation
             }
         }
 
-        public void GetGuestInfoInForm(int personCount)
+        public DataTable GetGuestInfoInForm(int personCount)
         {
-            List<Person> guestList = new List<Person>();
+            DataTable customers = new DataTable();
+            customers.Columns.Add("CivilizationNo");
+            customers.Columns.Add("FirstName");
+            customers.Columns.Add("LastName");
 
             for (int i = 1; i <= personCount; i++)
             {
-                Person person = new Person();
+                string name = "";
+                string lastName = "";
+                string civilizationNo = "";
+
                 foreach (var item in Request.Form.AllKeys)
                 {
 
                     if (item.Contains("txtFirstName"+i))
                     {
-                        person.FirstName = Request.Form[item].ToString();
+                        name = Request.Form[item].ToString();
                     }
                     else if (item.Contains("txtLastName"+i))
                     {
-                        person.LastName = Request.Form[item].ToString();
+                        lastName = Request.Form[item].ToString();
                     }
                     else if (item.Contains("txtCivilizationNo"+i))
                     {
-                        person.CivilizationNo = Request.Form[item].ToString();
+                        civilizationNo = Request.Form[item].ToString();
                     }
 
                 }
-                guestList.Add(person);
+                customers.Rows.Add(civilizationNo, name, lastName);
 
+            }
+
+            return customers;
+        }
+
+        public string GetType()
+        {
+            if (ddlType.SelectedValue == "Full")
+            {
+                return "F";
+            }
+            else if (ddlType.SelectedValue == "Full+Full")
+            {
+                return "FF";
+            }
+            else
+            {
+                return "S";
             }
         }
     }

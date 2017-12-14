@@ -18,7 +18,7 @@ namespace HotelReservation
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
             UserManagement _userManager = new UserManagement();
-            _userManager.AddUser(txtUserName.Text, txtMail.Text, txtPassword.Text, txtFirstName.Text, txtLastName.Text, Convert.ToInt64(txtCivilizationNumber.Text));
+            _userManager.AddUser(txtUserName.Text, txtMail.Text, txtPassword.Text, txtFirstName.Text, txtLastName.Text, txtCivilizationNumber.Text);
 
         }
     }

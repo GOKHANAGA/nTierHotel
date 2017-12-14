@@ -18,9 +18,14 @@ namespace HotelReservation
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             UserManagement _userManager = new UserManagement();
-            if (_userManager.UserLogin(txtMail.Text, txtPassword.Text)) ;
+            Guid userID;
+            string userName = "";
+            if (_userManager.UserLogin(txtMail.Text, txtPassword.Text,out userID,out userName)) ;
             {
+                Session["userName"] = userName;
+                Session["userID"] = userID;
                 txtMail.Text = "Giriş Onaylandı";
+                Response.Redirect("Index.aspx");
             }
         }
     }
