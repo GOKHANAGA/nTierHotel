@@ -12,7 +12,10 @@ namespace HotelReservation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["userName"] != null)
+            {
+                Response.Redirect("Index.aspx");
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

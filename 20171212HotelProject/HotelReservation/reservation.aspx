@@ -51,7 +51,7 @@
         <div class="form-group">
             <div class="col-sm-offset-5 col-sm-10">
                 <%--  <button type="submit" class="btn btn-default">Sign in</button> --%>
-                <asp:Button ID="btnReserve" class="btn btn-warning btn-lg" runat="server" Text="Sign Up" OnClick="btnReserve_Click" />
+                <asp:Button ID="btnReserve" class="btn btn-warning btn-lg" runat="server" Text="Save" OnClick="btnReserve_Click" />
                 <br />
             </div>
 

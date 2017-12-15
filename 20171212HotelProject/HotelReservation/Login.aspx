@@ -23,7 +23,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <%--  <button type="submit" class="btn btn-default">Sign in</button> --%>
-                <asp:Button ID="btnLogin" class="btn form-btn" runat="server" Text="Sign Up" OnClick="btnLogin_Click" />
+                <asp:Button ID="btnLogin" class="btn form-btn" runat="server" Text="Login" OnClick="btnLogin_Click" />
             </div>
 
         </div>
